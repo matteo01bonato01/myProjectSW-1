@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>App.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">myProjectSW1</a> &gt; <a href="index.source.html" class="el_package">it.isa.progetto</a> &gt; <span class="el_source">App.java</span></div><h1>App.java</h1><pre class="source lang-java linenums">package it.isa.progetto;
+
+import java.sql.Connection;
+import java.sql.Statement;
+
+/**
+ * Hello world!
+ *
+ */
+<span class="fc" id="L10">public class App </span>
+{	
+    public static void main( String[] args )
+    {
+		/*
+		 * CREO TABELLE E INSERISCO DELLE TUPLE CON UNA CLASSE
+		 * L'ORDINE E' IMPORTANTE !!
+		 */
+    	
+<span class="fc" id="L19">    	Drop d = new Drop ();</span>
+<span class="fc" id="L20">    	d.esegui();</span>
+    	
+    	
+    	
+    	/***************************************************/
+<span class="fc" id="L25">		CreaTabellaUtente ctutente = new CreaTabellaUtente();</span>
+<span class="fc" id="L26">		ctutente.esegui();</span>
+		
+<span class="fc" id="L28">		CreaTabellaArtista ctartista = new CreaTabellaArtista();</span>
+<span class="fc" id="L29">		ctartista.esegui();</span>
+		
+<span class="fc" id="L31">		CreaTabellaLocation ctlocation = new CreaTabellaLocation();</span>
+<span class="fc" id="L32">		ctlocation.esegui();</span>
+		
+		//tabelle con foreign key
+<span class="fc" id="L35">		CreaTabellaEvento ctevento = new CreaTabellaEvento();</span>
+<span class="fc" id="L36">		ctevento.esegui();</span>
+		
+<span class="fc" id="L38">		CreaTabellaPrenotazione ctprenotazione = new CreaTabellaPrenotazione();</span>
+<span class="fc" id="L39">		ctprenotazione.esegui();</span>
+		
+<span class="fc" id="L41">		PannelloLogin pl = new PannelloLogin();</span>
+<span class="fc" id="L42">		pl.show();</span>
+		
+		
+<span class="fc" id="L45">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

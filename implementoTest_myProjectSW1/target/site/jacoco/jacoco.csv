@@ -1,0 +1,29 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+myProjectSW1,it.isa.progetto,GestioneArtista,33,615,0,6,14,127,0,9,0,6
+myProjectSW1,it.isa.progetto,GestioneUtente,45,1028,0,16,19,203,0,16,0,8
+myProjectSW1,it.isa.progetto,GestioneArtista.new KeyAdapter() {...},15,6,6,0,4,1,4,1,1,1
+myProjectSW1,it.isa.progetto,GestioneArtista.new KeyAdapter() {...},15,6,6,0,4,1,4,1,1,1
+myProjectSW1,it.isa.progetto,GestioneArtista.new KeyAdapter() {...},15,6,6,0,4,1,4,1,1,1
+myProjectSW1,it.isa.progetto,GestioneArtista.new KeyAdapter() {...},15,6,6,0,4,1,4,1,1,1
+myProjectSW1,it.isa.progetto,GestioneUtente.new ActionListener() {...},42,12,4,0,12,1,3,1,1,1
+myProjectSW1,it.isa.progetto,GestioneUtente.new KeyAdapter() {...},15,6,6,0,4,1,4,1,1,1
+myProjectSW1,it.isa.progetto,GestioneUtente.new ActionListener() {...},4,6,0,0,2,1,1,1,1,1
+myProjectSW1,it.isa.progetto,GestioneUtente.new ActionListener() {...},5,9,0,0,2,1,1,1,1,1
+myProjectSW1,it.isa.progetto,GestioneUtente.new ActionListener() {...},5,9,0,0,2,1,1,1,1,1
+myProjectSW1,it.isa.progetto,App,0,46,0,0,0,16,0,2,0,2
+myProjectSW1,it.isa.progetto,GestioneUtente.new ActionListener() {...},57,12,4,0,14,1,3,1,1,1
+myProjectSW1,it.isa.progetto,GestioneUtente.new ActionListener() {...},4,6,0,0,2,1,1,1,1,1
+myProjectSW1,it.isa.progetto,JTextFieldLimit,0,29,0,4,0,11,0,5,0,3
+myProjectSW1,it.isa.progetto,PannelloLogin.new ActionListener() {...},0,11,0,0,0,3,0,2,0,2
+myProjectSW1,it.isa.progetto,PannelloLogin.new ActionListener() {...},15,6,0,0,3,1,1,1,1,1
+myProjectSW1,it.isa.progetto,CreaTabellaPrenotazione,32,49,0,0,7,16,0,3,0,3
+myProjectSW1,it.isa.progetto,GestioneUtente.new KeyAdapter() {...},15,6,6,0,4,1,4,1,1,1
+myProjectSW1,it.isa.progetto,GestioneUtente.new KeyAdapter() {...},15,6,6,0,4,1,4,1,1,1
+myProjectSW1,it.isa.progetto,CreaTabellaEvento,32,53,0,0,7,17,0,3,0,3
+myProjectSW1,it.isa.progetto,PannelloLogin,14,331,0,4,6,68,0,6,0,4
+myProjectSW1,it.isa.progetto,CreaTabellaUtente,8,77,0,0,3,21,0,3,0,3
+myProjectSW1,it.isa.progetto,Drop,8,43,0,0,3,15,0,3,0,3
+myProjectSW1,it.isa.progetto,CreaTabellaLocation,32,45,0,0,7,15,0,3,0,3
+myProjectSW1,it.isa.progetto,GestioneArtista.new ActionListener() {...},43,6,0,0,6,1,1,1,1,1
+myProjectSW1,it.isa.progetto,CreaTabellaArtista,32,53,0,0,7,17,0,3,0,3
+myProjectSW1,it.isa.progetto,GestioneUtente.new ActionListener() {...},43,6,0,0,6,1,1,1,1,1

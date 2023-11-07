@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CreaTabellaPrenotazione.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">myProjectSW1</a> &gt; <a href="index.source.html" class="el_package">it.isa.progetto</a> &gt; <span class="el_source">CreaTabellaPrenotazione.java</span></div><h1>CreaTabellaPrenotazione.java</h1><pre class="source lang-java linenums">package it.isa.progetto;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+<span class="fc" id="L8">public class CreaTabellaPrenotazione {</span>
+<span class="fc" id="L9">	static String url = &quot;jdbc:db2://localhost:25000/SAMPLE:retrieveMessagesFromServerOnGetMessage=true;&quot;;</span>
+	static Connection con;
+	static Statement stmt, stmtcheck;
+	
+	
+	public void esegui() {
+		// CONNESSIONE A DB2
+		try {
+<span class="fc" id="L17">			Class.forName(&quot;com.ibm.db2.jcc.DB2Driver&quot;);</span>
+
+<span class="nc" id="L19">		} catch(java.lang.ClassNotFoundException e) {</span>
+<span class="nc" id="L20">			System.err.print(&quot;ClassNotFoundException: &quot;); </span>
+<span class="nc" id="L21">			System.err.println(e.getMessage());</span>
+<span class="fc" id="L22">		}</span>
+		
+		
+		/********** TABELLA: ARTISTA ************/
+		try {
+<span class="fc" id="L27">			con = DriverManager.getConnection(url,&quot;matteo&quot;,&quot;NuovaOpelCorsa&quot;);</span>
+<span class="fc" id="L28">        	stmt = con.createStatement();</span>
+        	
+<span class="fc" id="L30">        	stmt.executeUpdate(&quot;create table PRENOTAZIONE &quot; +</span>
+        			&quot;(ID integer not null GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1), &quot; + /******* ATTENZIONE ALLA PARENTESII!!!! ****/
+					&quot;LOGIN_UR char(32) NOT NULL, &quot; +
+					&quot;ID_EVENTO int NOT NULL, &quot; +
+					&quot;foreign key(LOGIN_UR) references UTENTEREGISTRATO(LOG) on DELETE CASCADE on UPDATE NO ACTION, &quot; +
+					&quot;foreign key(ID_EVENTO) references EVENTO(ID) on DELETE CASCADE on UPDATE NO ACTION, &quot; +
+					&quot;PRIMARY KEY(ID));&quot;);
+        	
+<span class="nc" id="L38">		} catch(SQLException ex) {</span>
+<span class="nc" id="L39">			System.err.println(&quot;ERRORE CREATE PRENOTAZIONE: &quot;+ex.getMessage());</span>
+<span class="fc" id="L40">		}</span>
+		
+		/********** POPOLO PRENOTAZIONI  ************/
+		try {			
+			
+<span class="fc" id="L45">			stmt.executeUpdate(&quot;insert into PRENOTAZIONE(LOGIN_UR, ID_EVENTO) &quot; + </span>
+			     &quot;values('matte78', '2');&quot;);
+
+<span class="fc" id="L48">			stmt.executeUpdate(&quot;insert into PRENOTAZIONE(LOGIN_UR, ID_EVENTO) &quot; + </span>
+				     &quot;values('matte78', '1');&quot;);
+			
+<span class="fc" id="L51">			stmt.executeUpdate(&quot;insert into PRENOTAZIONE(LOGIN_UR, ID_EVENTO) &quot; + </span>
+				     &quot;values('vice11', '3');&quot;);
+			
+<span class="fc" id="L54">			stmt.executeUpdate(&quot;insert into PRENOTAZIONE(LOGIN_UR, ID_EVENTO) &quot; + </span>
+				     &quot;values('marco78', '4');&quot;);
+			
+<span class="fc" id="L57">			stmt.executeUpdate(&quot;insert into PRENOTAZIONE(LOGIN_UR, ID_EVENTO) &quot; + </span>
+				     &quot;values('giova55', '3');&quot;);
+			
+<span class="fc" id="L60">			stmt.executeUpdate(&quot;insert into PRENOTAZIONE(LOGIN_UR, ID_EVENTO) &quot; + </span>
+				     &quot;values('giova55', '7');&quot;);
+			
+<span class="nc" id="L63">		} catch(SQLException ex) {</span>
+<span class="nc" id="L64">			System.err.println(&quot;ERRORE sugli INSERT into PRENOTAZIONE: &quot;+ex.getMessage());</span>
+<span class="fc" id="L65">		}</span>
+		
+<span class="fc" id="L67">	}//esegui</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

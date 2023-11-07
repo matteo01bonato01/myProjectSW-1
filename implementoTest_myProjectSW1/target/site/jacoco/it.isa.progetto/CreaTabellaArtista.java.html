@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CreaTabellaArtista.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">myProjectSW1</a> &gt; <a href="index.source.html" class="el_package">it.isa.progetto</a> &gt; <span class="el_source">CreaTabellaArtista.java</span></div><h1>CreaTabellaArtista.java</h1><pre class="source lang-java linenums">package it.isa.progetto;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+<span class="fc" id="L8">public class CreaTabellaArtista {</span>
+<span class="fc" id="L9">	static String url = &quot;jdbc:db2://localhost:25000/SAMPLE:retrieveMessagesFromServerOnGetMessage=true;&quot;;</span>
+	static Connection con;
+	static Statement stmt, stmtcheck;
+	
+	
+	public void esegui() {
+		// CONNESSIONE A DB2
+		try {
+<span class="fc" id="L17">			Class.forName(&quot;com.ibm.db2.jcc.DB2Driver&quot;);</span>
+
+<span class="nc" id="L19">		} catch(java.lang.ClassNotFoundException e) {</span>
+<span class="nc" id="L20">			System.err.print(&quot;ClassNotFoundException: &quot;); </span>
+<span class="nc" id="L21">			System.err.println(e.getMessage());</span>
+<span class="fc" id="L22">		}</span>
+		
+		
+		/********** TABELLA: ARTISTA ************/
+		try {
+<span class="fc" id="L27">			con = DriverManager.getConnection(url,&quot;matteo&quot;,&quot;NuovaOpelCorsa&quot;);</span>
+<span class="fc" id="L28">        	stmt = con.createStatement();</span>
+        	
+<span class="fc" id="L30">        	stmt.executeUpdate(&quot;create table ARTISTA &quot; +</span>
+        			//&quot;(ID integer not null GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1), &quot; + /******* ATTENZIONE ALLA PARENTESII!!!! ****/
+					&quot;(LOG char(32) NOT NULL UNIQUE, &quot; + 
+					&quot;PASSW char(18) NOT NULL, &quot; +
+					&quot;NOME_ARTISTA char(33) NOT NULL PRIMARY KEY, &quot; +
+					&quot;DATA_FORMAZIONE date NOT NULL, &quot; +
+					&quot;NUM_COMPONENTI int NOT NULL, &quot; +
+					&quot;GENERE char(15) NOT NULL ); &quot;);
+        	
+<span class="nc" id="L39">		} catch(SQLException ex) {</span>
+<span class="nc" id="L40">			System.err.println(&quot;ERRORE CREATE ARTISTA: &quot;+ex.getMessage());</span>
+<span class="fc" id="L41">		}</span>
+		
+		/********** POPOLO ARTISTA ************/
+		try {			
+			
+<span class="fc" id="L46">			stmt.executeUpdate(&quot;insert into ARTISTA(LOG, PASSW, NOME_ARTISTA, DATA_FORMAZIONE, NUM_COMPONENTI, GENERE) &quot; + </span>
+					&quot;values('zucchero24', 'zucchero24', 'Zucchero Fornaciari', '1995-09-25', 1, 'pop-rock');&quot;);
+
+<span class="fc" id="L49">			stmt.executeUpdate(&quot;insert into ARTISTA(LOG, PASSW, NOME_ARTISTA, DATA_FORMAZIONE, NUM_COMPONENTI, GENERE) &quot; + </span>
+				     &quot;values('litfibaa', 'litfibaa', 'Litfiba', '1980-10-01', 5, 'rock');&quot;);
+			
+<span class="fc" id="L52">			stmt.executeUpdate(&quot;insert into ARTISTA(LOG, PASSW, NOME_ARTISTA, DATA_FORMAZIONE, NUM_COMPONENTI, GENERE) &quot; + </span>
+				     &quot;values('21pilots', '21pilots', 'Twenty One Pilots', '2008-05-01', 2, 'tecno-pop');&quot;);
+			
+<span class="fc" id="L55">			stmt.executeUpdate(&quot;insert into ARTISTA(LOG, PASSW, NOME_ARTISTA, DATA_FORMAZIONE, NUM_COMPONENTI, GENERE) &quot; + </span>
+				     &quot;values('pingu90', 'pingu90', 'Pinguini Tattici Nucleari', '2014-02-01', 6, 'pop');&quot;);
+			
+<span class="fc" id="L58">			stmt.executeUpdate(&quot;insert into ARTISTA(LOG, PASSW, NOME_ARTISTA, DATA_FORMAZIONE, NUM_COMPONENTI, GENERE) &quot; + </span>
+				     &quot;values('pucci71', 'pucci71', 'Andrea Pucci', '2008-06-01', 2, 'commedia-teatro');&quot;);
+			
+<span class="fc" id="L61">			stmt.executeUpdate(&quot;insert into ARTISTA(LOG, PASSW, NOME_ARTISTA, DATA_FORMAZIONE, NUM_COMPONENTI, GENERE) &quot; + </span>
+				     &quot;values('giorgia71', 'giorgia71', 'Giorgia', '1993-10-01', 1, 'pop-soul-r&amp;b');&quot;);
+			
+<span class="fc" id="L64">			stmt.executeUpdate(&quot;insert into ARTISTA(LOG, PASSW, NOME_ARTISTA, DATA_FORMAZIONE, NUM_COMPONENTI, GENERE) &quot; + </span>
+				     &quot;values('ligabue60', 'ligabue60', 'Luciano Riccardo Ligabue', '1987-01-01', 1, 'pop-rock');&quot;);
+			
+<span class="nc" id="L67">		} catch(SQLException ex) {</span>
+<span class="nc" id="L68">		System.err.println(&quot;ERRORE sugli INSERT into ARTISTA: &quot;+ex.getMessage());</span>
+<span class="fc" id="L69">		}</span>
+		
+			
+<span class="fc" id="L72">	}//esegui</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

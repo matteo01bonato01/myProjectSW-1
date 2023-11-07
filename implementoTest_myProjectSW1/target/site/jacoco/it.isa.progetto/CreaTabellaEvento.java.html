@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CreaTabellaEvento.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">myProjectSW1</a> &gt; <a href="index.source.html" class="el_package">it.isa.progetto</a> &gt; <span class="el_source">CreaTabellaEvento.java</span></div><h1>CreaTabellaEvento.java</h1><pre class="source lang-java linenums">package it.isa.progetto;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+<span class="fc" id="L8">public class CreaTabellaEvento {</span>
+<span class="fc" id="L9">	static String url = &quot;jdbc:db2://localhost:25000/SAMPLE:retrieveMessagesFromServerOnGetMessage=true;&quot;;</span>
+	static Connection con;
+	static Statement stmt, stmtcheck;
+	
+	
+	public void esegui() {
+		// CONNESSIONE A DB2
+		try {
+<span class="fc" id="L17">			Class.forName(&quot;com.ibm.db2.jcc.DB2Driver&quot;);</span>
+
+<span class="nc" id="L19">		} catch(java.lang.ClassNotFoundException e) {</span>
+<span class="nc" id="L20">			System.err.print(&quot;ClassNotFoundException: &quot;); </span>
+<span class="nc" id="L21">			System.err.println(e.getMessage());</span>
+<span class="fc" id="L22">		}</span>
+		
+		
+		/********** TABELLA: ARTISTA ************/
+		try {
+<span class="fc" id="L27">			con = DriverManager.getConnection(url,&quot;matteo&quot;,&quot;NuovaOpelCorsa&quot;);</span>
+<span class="fc" id="L28">        	stmt = con.createStatement();</span>
+        	
+<span class="fc" id="L30">        	stmt.executeUpdate(&quot;create table EVENTO &quot; +</span>
+        			&quot;(ID integer not null GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1), &quot; + /******* ATTENZIONE ALLA PARENTESII!!!! ****/
+					&quot;NOME_EVENTO char(50) NOT NULL, &quot; +
+					&quot;NOME_LOCATION char(33), &quot; +
+					&quot;NOME_ARTISTA char(33), &quot; +
+					&quot;DATA_EVENTO date NOT NULL, &quot; +
+					&quot;PREZZO double NOT NULL, &quot; +
+					&quot;DISPONIBILITA int NOT NULL, &quot; +
+					&quot;foreign key(NOME_ARTISTA) references ARTISTA(NOME_ARTISTA) on DELETE SET NULL on UPDATE NO ACTION, &quot; +
+					&quot;foreign key(NOME_LOCATION) references LOCATION(NOME_LOCATION) on DELETE SET NULL on UPDATE NO ACTION, &quot; +
+					&quot;PRIMARY KEY(ID));&quot;);
+        	
+<span class="nc" id="L42">		} catch(SQLException ex) {</span>
+<span class="nc" id="L43">			System.err.println(&quot;ERRORE su CREATE EVENTO: &quot;+ex.getMessage());</span>
+<span class="fc" id="L44">		}</span>
+		
+		/********** POPOLO EVENTI ************/
+		try {			
+			
+<span class="fc" id="L49">			stmt.executeUpdate(&quot;insert into EVENTO(NOME_EVENTO, NOME_LOCATION, NOME_ARTISTA, DATA_EVENTO, PREZZO, DISPONIBILITA) &quot; + </span>
+					 &quot;values('Zucchero in Festa', 'Castello Carrarese', 'Zucchero Fornaciari', '2022-06-05', 79, 5000);&quot;);
+
+<span class="fc" id="L52">			stmt.executeUpdate(&quot;insert into EVENTO(NOME_EVENTO, NOME_LOCATION, NOME_ARTISTA, DATA_EVENTO, PREZZO, DISPONIBILITA) &quot; + </span>
+				     &quot;values('Pinguini Indoor', 'Unipol Arena', 'Pinguini Tattici Nucleari', '2024-04-27', 81, 9000);&quot;);
+
+<span class="fc" id="L55">			stmt.executeUpdate(&quot;insert into EVENTO(NOME_EVENTO, NOME_LOCATION, NOME_ARTISTA, DATA_EVENTO, PREZZO, DISPONIBILITA) &quot; + </span>
+				     &quot;values('Trench Tour', 'Unipol Arena', 'Twenty One Pilots', '2019-02-06', 60, 9000);&quot;);
+
+<span class="fc" id="L58">			stmt.executeUpdate(&quot;insert into EVENTO(NOME_EVENTO, NOME_LOCATION, NOME_ARTISTA, DATA_EVENTO, PREZZO, DISPONIBILITA) &quot; + </span>
+				     &quot;values('Pucci Show', 'Castello Carrarese', 'Andrea Pucci', '2022-06-08', 39, 7000);&quot;);
+
+<span class="fc" id="L61">			stmt.executeUpdate(&quot;insert into EVENTO(NOME_EVENTO, NOME_LOCATION, NOME_ARTISTA, DATA_EVENTO, PREZZO, DISPONIBILITA) &quot; + </span>
+				     &quot;values('Ferrara Summer Festival - Giorgia', 'Piazza Trento - Trieste', 'Giorgia', '2022-06-08', 31, 7000);&quot;);
+			
+<span class="fc" id="L64">			stmt.executeUpdate(&quot;insert into EVENTO(NOME_EVENTO, NOME_LOCATION, NOME_ARTISTA, DATA_EVENTO, PREZZO, DISPONIBILITA) &quot; + </span>
+				     &quot;values('Campovolo Ligabue', 'RCF Arena', 'Luciano Riccardo Ligabue', '2022-06-04', 89, 100000);&quot;);
+			
+<span class="fc" id="L67">			stmt.executeUpdate(&quot;insert into EVENTO(NOME_EVENTO, NOME_LOCATION, NOME_ARTISTA, DATA_EVENTO, PREZZO, DISPONIBILITA) &quot; + </span>
+				     &quot;values('L''ultimo girone', 'Piazza Trento - Trieste', 'Litfiba', '2022-07-16', 39, 7000);&quot;);
+			
+<span class="nc" id="L70">		} catch(SQLException ex) {</span>
+<span class="nc" id="L71">		System.err.println(&quot;ERRORE sugli INSERT into EVENTO: &quot;+ex.getMessage());</span>
+<span class="fc" id="L72">		}</span>
+<span class="fc" id="L73">	}//esegui</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Drop.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">myProjectSW1</a> &gt; <a href="index.source.html" class="el_package">it.isa.progetto</a> &gt; <span class="el_source">Drop.java</span></div><h1>Drop.java</h1><pre class="source lang-java linenums">package it.isa.progetto;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+<span class="fc" id="L9">public class Drop {</span>
+<span class="fc" id="L10">	static String url = &quot;jdbc:db2://localhost:25000/SAMPLE:retrieveMessagesFromServerOnGetMessage=true;&quot;;</span>
+	static Connection con;
+	static Statement stmt;
+	
+
+	void esegui() {
+		try {
+<span class="fc" id="L17">			Class.forName(&quot;com.ibm.db2.jcc.DB2Driver&quot;);</span>
+
+<span class="nc" id="L19">		} catch(java.lang.ClassNotFoundException e) {</span>
+<span class="nc" id="L20">			System.err.print(&quot;ClassNotFoundException: &quot;); </span>
+<span class="nc" id="L21">			System.err.println(e.getMessage());</span>
+<span class="fc" id="L22">		}</span>
+		
+		
+		try {
+<span class="fc" id="L26">			con = DriverManager.getConnection(url,&quot;matteo&quot;,&quot;NuovaOpelCorsa&quot;);</span>
+<span class="fc" id="L27">			stmt = con.createStatement();</span>
+			
+<span class="fc" id="L29">			stmt.executeUpdate(&quot;DROP TABLE ARTISTA;&quot;);</span>
+<span class="fc" id="L30">			stmt.executeUpdate(&quot;DROP TABLE PRENOTAZIONE;&quot;);</span>
+<span class="fc" id="L31">			stmt.executeUpdate(&quot;DROP TABLE LOCATION;&quot;);</span>
+<span class="fc" id="L32">			stmt.executeUpdate(&quot;DROP TABLE EVENTO;&quot;);</span>
+<span class="fc" id="L33">			stmt.executeUpdate(&quot;DROP TABLE UTENTEREGISTRATO; &quot;);</span>
+        	
+			
+<span class="fc" id="L36">		} catch (SQLException e1) {</span>
+			// TODO Auto-generated catch block
+<span class="fc" id="L38">			e1.printStackTrace();</span>
+<span class="fc" id="L39">		}</span>
+<span class="fc" id="L40">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
